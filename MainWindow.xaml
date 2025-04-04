@@ -14,7 +14,8 @@
             <Label Content="{Binding StateMessage}" HorizontalContentAlignment="Center"/>
             <Label Content="{Binding KorWord}" HorizontalContentAlignment="Center"/>
             <Label Content="{Binding DisplayWord}" HorizontalContentAlignment="Center"/>
-            <Label Content="Binding Message" HorizontalContentAlignment="Center"/>
+            <Label Content="Message" HorizontalContentAlignment="Center"/>
+            <Button Name="replay" Content="다시하기" Command="{Binding Replay}" />
         </StackPanel>
         <UniformGrid Grid.Row="1">
             <ItemsControl Name="ic">

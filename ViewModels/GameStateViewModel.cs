@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using wpf_inf.Models;
 using static wpf_inf.CharButtonState;
 
@@ -14,7 +15,6 @@ namespace wpf_inf.ViewModels
     {
         private readonly GameStateModel _stateModel;
         private readonly GameWordModel _wordModel;
-        ObservableCollection<CharButtonState> CharButtons;
 
         private string EngWord => _wordModel.EngWord;
 
@@ -24,6 +24,9 @@ namespace wpf_inf.ViewModels
         private List<char> _selectedChars;
         private bool _isGameIng;
         private bool _isWin;
+        private ICommand _replay;
+
+        public ObservableCollection<CharButtonState> CharButtons => _wordModel.CharButtons;
 
         public int Wrong
         {
@@ -79,6 +82,18 @@ namespace wpf_inf.ViewModels
             {
                 SetProperty(ref _isGameIng, value);
                 _stateModel.SetGameIng(value);
+            }
+        }
+
+        public ICommand Replay
+        {
+            get
+            {
+                if (_replay == null)
+                {
+                    _replay = new RelayCommand(_ => ReplayCommand(), _ => true);
+                }
+                return _replay;
             }
         }
 
@@ -140,10 +155,6 @@ namespace wpf_inf.ViewModels
             }
         }
 
-        public void ChangeWordsDisplay(char word)
-        {
-            //보이는 글자 바꾸기
-        }
 
         public bool CheckChar(string word)
         {
@@ -155,16 +166,8 @@ namespace wpf_inf.ViewModels
             return false;
         }
 
-        public void OnClickChar(string word)
-        {
-            bool isCorrect = CheckChar(word);
-            if (isCorrect) SelectCorrect(word[0]);
-            else SelectWrong();
-            SelectedChars.Add(word[0]);
-        }
-
-        // 버튼 클릭 핸들러 메서드 - 이 부분이 실제 호출되는 메서드입니다
-        public void HandleCharButtonClick(object parameter)
+    
+        public void OnClickChar(object parameter)
         {
             if (!IsGameIng) return;
 
@@ -199,7 +202,7 @@ namespace wpf_inf.ViewModels
             foreach (var button in _wordModel.CharButtons)
             {
                 button.IsEnabled = true;
-                button.OnClickChar = new DelegateCommand(HandleCharButtonClick);
+                button.OnClickChar = new RelayCommand(OnClickChar);
             }
 
             // 랜덤 단어 선택
@@ -223,15 +226,23 @@ namespace wpf_inf.ViewModels
             OnPropertyChanged(nameof(DisplayWord));
         }
 
-        public GameStateViewModel(GameStateModel model, GameWordModel wordModel)
+        public void ReplayCommand ()
         {
-            _stateModel = model;
-            _wordModel = wordModel;
-            _wrong = model.Wrong;
-            _maxWrong = model.MaxWrong;
-            _stateMessage = model.StateMessage;
-            _isGameIng = model.IsGameIng;
-            _isWin = model.IsWin;
+            InitializeGame();
+        }
+
+        public GameStateViewModel()
+        {
+            //모델 초기화
+            _stateModel = new GameStateModel();
+            _wordModel = new GameWordModel();
+
+            _wrong = _stateModel.Wrong;
+            _maxWrong = _stateModel.MaxWrong;
+            _stateMessage = _stateModel.StateMessage;
+            _isGameIng = _stateModel.IsGameIng;
+            _isWin = _stateModel.IsWin;
+
         }
     }
 }
