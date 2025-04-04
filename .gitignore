@@ -1,0 +1,127 @@
+# Visual Studio 캐시/옵션 디렉토리
+.vs/
+.vscode/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+AnyCPU/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# 비주얼 스튜디오 파일
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# 빌드 결과
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio 프로필
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# 코드 분석 도구
+.sonarqube/
+
+# 캐시 파일
+*.cache
+*.dll
+*.exe
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# ReSharper 캐시 디렉토리
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# TeamCity 디렉토리
+_TeamCity*
+
+# DotCover 디렉토리
+*.dotCover
+
+# NCrunch 캐시
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# IntelliJ IDEA / JetBrains Rider
+.idea/
+*.sln.iml
+.idea/
+
+# VS Code 디렉토리
+.vscode/
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Visual Studio 프로파일 결과
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# NuGet 패키지 폴더
+packages/
+*.nupkg
+# NuGet v3의 project.json 파일
+project.json
+project.lock.json
+artifacts/
+
+# Windows 이미지 파일 캐시
+Thumbs.db
+ehthumbs.db
+
+# Windows 폴더 설정 파일
+Desktop.ini
+
+# Windows 바로가기
+*.lnk
+
+# 맥 OSX 파일
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Telerik 캐시 파일
+_Telerik.ReportViewer.WebForms.axd*
